@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Summary</title>
+    <style>
+        /* Styling stays the same */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafb;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #111827;
+            font-size: 2rem;
+        }
+
+        .header p {
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        .content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .document-icon {
+            flex: 0 0 300px;
+            aspect-ratio: 3/4;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .document-icon svg {
+            width: 120px;
+            height: 120px;
+            color: #e5e7eb;
+        }
+
+        .upload-section {
+            flex: 1;
+        }
+
+        .upload-area {
+            background: white;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-area:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .upload-area p {
+            margin: 8px 0 0;
+            color: #6b7280;
+        }
+
+        .summary-section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .summary-section h3 {
+            margin: 0 0 16px;
+            color: #111827;
+        }
+
+        .summary-content {
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .action-button {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .action-button:hover {
+            background: #f9fafb;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Document Summary</h1>
+            <p>Upload your document to get an instant summary</p>
+        </div>
+
+        <div class="content">
+            <div class="document-icon">
+                <!-- Document Icon SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </div>
+
+            <div class="upload-section">
+                <label for="fileInput" class="upload-area">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p>Click to upload or drag and drop</p>
+                </label>
+                <input type="file" id="fileInput" onchange="handleFileUpload()">
+
+                <div class="summary-section">
+                    <h3>Document Summary</h3>
+                    <div class="summary-content" id="summary">
+                        Upload a document to see its summary here.
+                    </div>
+                    <div class="actions">
+                        <button class="action-button" onclick="copySummary()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                        <button class="action-button" id="downloadDocx">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            Docx
+                        </button>
+                        <button class="action-button" id="downloadTxt">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                                <line x1="9" y1="20" x2="15" y2="20"></line>
+                                <line x1="12" y1="4" x2="12" y2="20"></line>
+                            </svg>
+                            Txt
+                        </button>
+                        <button class="action-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleFileUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('summary').innerText = data.summary;
+                })
+                .catch(error => {
+                    console.error('Error uploading file:', error);
+                    alert('Failed to process the document');
+                });
+            }
+        }
+
+        function copySummary() {
+            const summaryText = document.getElementById('summary').innerText;
+            navigator.clipboard.writeText(summaryText)
+                .then(() => alert('Summary copied to clipboard!'))
+                .catch(err => console.error('Error copying text: ', err));
+        }
+    </script>
+</body>
+</html>
