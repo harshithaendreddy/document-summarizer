@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from docx import Document
 from nltk.tokenize import sent_tokenize
 
-GENAI_API_KEY = "AIzaSyDfrSB_20mfYo727TArfVcsHyGaR6ljqk0"  
+GENAI_API_KEY = ""  
 genai.configure(api_key=GENAI_API_KEY)
 
 # Load the AI model
