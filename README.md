@@ -41,10 +41,3 @@ The application will run at `http://127.0.0.1:5000/`.
 
 ### Download the Summary
 Once the summary is generated, you can download the summarized text.
-
-
-│── .env                     # Environment variables (not included in repo)
-│── README.md                # Project documentation
-```
-
-
