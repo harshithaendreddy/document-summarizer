@@ -1,103 +1,58 @@
-# AI Document Summarizer
+# Document Summarizer
 
-## Overview
-The **AI Document Summarizer** is a web application that allows users to upload text documents (PDF, DOCX, TXT) and receive a concise summary using AI-powered text processing. The application is built with **Flask**, utilizes **NLTK** for text processing, and integrates with **Gemini AI** for advanced summarization.
+This is a Flask-based web application that allows users to upload text documents and receive AI-generated summaries using Google's Gemini API.
 
 ## Features
-- Upload documents in **PDF, DOCX, or TXT** format.
-- Extracts and summarizes text from the document.
-- Uses AI to generate an improved summary.
-- Simple and interactive web interface.
+- Upload `.txt`, `.docx`, and `.pdf` files for processing.
+- Extract text from uploaded documents.
+- Generate AI-powered summaries using the Gemini API.
+- View and download the summarized text.
 
-## Tech Stack
-- **Backend:** Flask
-- **AI Summarization:** Google Gemini API
-- **Text Processing:** NLTK
-- **Frontend:** HTML, CSS (Jinja Templates)
+## Installation
 
-## Installation & Setup
+### Prerequisites
+Make sure you have the following installed:
+- Python 3.8+
+- pip
 
-### 1. Clone the Repository
-```sh
-git clone https://github.com/harshithaendreddy/document-summarizer.git
+### Clone the Repository
+```bash
+git clone [<your-repo-url>](https://github.com/harshithaendreddy/document-summarizer.git)
 cd document-summarizer
 ```
 
-### 2. Create a Virtual Environment (Optional but Recommended)
-```sh
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-```sh
+### Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-### 4. Set Up Google Gemini API (If AI Summarization is Used)
-- Obtain an API key from Google Gemini.
-- Create a `.env` file in the project root and add:
-```sh
-GEMINI_API_KEY=your_api_key_here
-```
+## Usage
 
-### 5. Run the Flask Application
-```sh
+### Start the Flask Server
+```bash
 python app.py
 ```
+The application will run at `http://127.0.0.1:5000/`.
 
-The application will be accessible at `http://127.0.0.1:5000/`.
+### Upload and Summarize a Document
+1. Open your browser and go to `http://127.0.0.1:5000/`
+2. Click on "Upload File" and select a document.
+3. Wait for the AI to process and display the summary.
 
-## Project Structure
-```
-├── ai_doc_summarizer/
-│   ├── app.py  # Flask App
-│   ├── document_processor.py  # Handles text extraction & summarization
-│   ├── templates/
-│   │   ├── index.html  # Frontend UI
-│   ├── uploaded_docs/  # Stores uploaded files
-│   ├── static/  # CSS, JS files
-│   ├── requirements.txt  # Dependencies
-│   ├── .gitignore  # Ignoring unnecessary files
-└── README.md
-```
+### Download the Summary
+Once the summary is generated, you can download the summarized text.
 
-## Handling Large Files Issue in Git
-To avoid pushing large files (like `venv/`, PyTorch libraries, etc.), ensure:
-- `.gitignore` includes:
+## Folder Structure
 ```
-venv/
-__pycache__/
-uploaded_docs/
-*.dll
-*.lib
-```
-- If you mistakenly added large files, remove them:
-```sh
-git rm --cached -r venv/
-git commit -m "Removed large files from tracking"
-git push origin main
-```
-- If large files are necessary, use **Git LFS**:
-```sh
-git lfs install
-git lfs track "*.dll"
-git add .gitattributes
-git commit -m "Enable Git LFS"
-git push origin main
+project-root/
+│── app.py                  # Main Flask application
+│── document_processor.py    # Handles text extraction and AI processing
+│── templates/               # HTML templates
+│── static/                  # Static assets (CSS, JS)
+│── uploads/                 # Temporary file storage
+│── requirements.txt         # Python dependencies
+│── .env                     # Environment variables (not included in repo)
+│── README.md                # Project documentation
 ```
 
-## Future Enhancements
-- Deploy the application on **Render/AWS/GCP**.
-- Improve summarization accuracy with **fine-tuned AI models**.
-- Add support for multiple languages.
-
-## Contributing
-Feel free to fork the repo, create a branch, and submit a pull request. Any contributions to improve the AI summarization feature are welcome!
-
-## License
-MIT License. See `LICENSE` for details.
-
----
-🚀 **Developed by Harshitha Reddy**
 
