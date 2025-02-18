@@ -17,7 +17,7 @@ Make sure you have the following installed:
 
 ### Clone the Repository
 ```bash
-git clone [<your-repo-url>](https://github.com/harshithaendreddy/document-summarizer.git)
+git clone https://github.com/harshithaendreddy/document-summarizer.git
 cd document-summarizer
 ```
 
