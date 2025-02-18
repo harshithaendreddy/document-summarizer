@@ -42,15 +42,7 @@ The application will run at `http://127.0.0.1:5000/`.
 ### Download the Summary
 Once the summary is generated, you can download the summarized text.
 
-## Folder Structure
-```
-project-root/
-│── app.py                  # Main Flask application
-│── document_processor.py    # Handles text extraction and AI processing
-│── templates/               # HTML templates
-│── static/                  # Static assets (CSS, JS)
-│── uploads/                 # Temporary file storage
-│── requirements.txt         # Python dependencies
+
 │── .env                     # Environment variables (not included in repo)
 │── README.md                # Project documentation
 ```
