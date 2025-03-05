@@ -6,7 +6,7 @@ This is a Flask-based web application that allows users to upload text documents
 - Upload `.txt`, `.docx`, and `.pdf` files for processing.
 - Extract text from uploaded documents.
 - Generate AI-powered summaries using the Gemini API.
-- View and download the summarized text.
+- View and copy the summarized text.
 
 ## Installation
 
